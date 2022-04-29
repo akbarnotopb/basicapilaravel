@@ -20,23 +20,23 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::get("error", function(Request $request){
-    return response()->json(["data"=>"error"],500);
+    return response()->json(["data"=>"error", "timestamp" => Carbon\Carbon::now()],500);
 });
 
 
 Route::get("success", function(Request $request){
-    return response()->json(["data"=>"success"],200);
+    return response()->json(["data"=>"success", "timestamp" => Carbon\Carbon::now()],200);
 });
 
 Route::get("unable", function(Request $request){
-    return response()->json(["data"=>"unavailable service"],422);
+    return response()->json(["data"=>"unavailable service", "timestamp" => Carbon\Carbon::now()],422);
 });
 
 Route::get("moved", function(Request $request){
-    return response()->json(["data"=>"unavailable service"],308);
+    return response()->json(["data"=>"unavailable service", "timestamp" => Carbon\Carbon::now()],308);
 });
 
 Route::get("timeout", function(Request $request){
     sleep(60);
-    return response()->json(["data"=>"timeout"], 408);
+    return response()->json(["data"=>"timeout", "timestamp" => Carbon\Carbon::now()], 408);
 });
