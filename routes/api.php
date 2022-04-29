@@ -35,3 +35,8 @@ Route::get("unable", function(Request $request){
 Route::get("moved", function(Request $request){
     return response()->json(["data"=>"unavailable service"],308);
 });
+
+Route::get("timeout", function(Request $request){
+    sleep(60);
+    return response()->json(["data"=>"timeout"], 408);
+});
